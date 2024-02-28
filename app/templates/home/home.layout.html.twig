@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% block content %}
-    {% endblock %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 main-table">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
