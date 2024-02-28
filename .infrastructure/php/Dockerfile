@@ -43,8 +43,6 @@ FROM app as app_dev
 
 ENV XDEBUG_MODE=off
 
-#COPY ./php/conf.d/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
-
 RUN set -eux; \
 	install-php-extensions xdebug
 

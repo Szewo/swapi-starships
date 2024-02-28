@@ -1,22 +1,41 @@
 {% extends 'home/home.layout.html.twig' %}
 
 {% block content %}
+    <div class="row text-center mt-5">
+        <h1>SWAPI Starships</h1>
+    </div>
     <div class="row">
-        <table class="table-responsive">
-            <thead>
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Model</th>
-                <th scope="col">Starship Class</th>
-                <th scope="col">Consumables</th>
-                <th scope="col">Cost</th>
-                <th scope="col">Crew</th>
-                <th scope="col">Passengers</th>
-                <th scope="col">Hyperdrive Reating</th>
-            </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+        {% if starships is empty %}
+            <h1>Something went wrong. Try again later.</h1>
+        {% else %}
+            <table class="table table-striped table-responsive mt-5 table-dark text-center">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Starship Class</th>
+                    <th scope="col">Consumables</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">Crew</th>
+                    <th scope="col">Passengers</th>
+                    <th scope="col">Hyperdrive Rating</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for starship in starships %}
+                <tr>
+                    <td> {{ starship.name }} </td>
+                    <td> {{ starship.model }}</td>
+                    <td> {{ starship.starshipClass }}</td>
+                    <td> {{ starship.consumables }}</td>
+                    <td> {{ starship.costInCredits }}</td>
+                    <td> {{ starship.crew }}</td>
+                    <td> {{ starship.passengers }}</td>
+                    <td> {{ starship.hyperdriveRating }}</td>
+                <tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
     </div>
 {% endblock %}

@@ -15,3 +15,5 @@ app/vendor/
 app/public/assets/
 app/assets/vendor/
 ###< symfony/asset-mapper ###
+/app/tools/php-cs-fixer/vendor/
+/app/.php-cs-fixer.cache

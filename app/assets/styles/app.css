@@ -2,9 +2,3 @@ body{
     background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     color: white;
 }
-
-.main-table {
-    background-color: #0f0c29;
-    border-radius: 20px;
-    margin-top: 5%;
-}
