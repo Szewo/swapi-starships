@@ -9,6 +9,7 @@ use App\Response\ResponseStatus;
 use App\Response\SwapiResponse;
 use App\Response\SwapiResponseInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
@@ -70,10 +71,11 @@ final class SwapiResponseTest extends TestCase
         );
     }
 
-    public function testCanReturnContent(): void
+    #[DataProvider('starshipsProvider')]
+    public function testCanReturnContent(array $starships): void
     {
         $this->instance->setContent(
-            content: $this->getArrayWithStarships(),
+            content: $starships,
         );
 
         $this->assertIsArray(
@@ -82,26 +84,30 @@ final class SwapiResponseTest extends TestCase
     }
 
     /**
-     * @return StarshipDTO[]
+     * @return array<StarshipDTO>
      */
-    private function getArrayWithStarships(): array
+    public static function starshipsProvider(): array
     {
         return [
-            new StarshipDTO(
-                name: 'Test Name',
-                model: 'Model',
-                starshipClass: 'Class',
-                manufacturer: 'Manufacturer',
-                costInCredits: '100000',
-                length: '1000',
-                crew: 'Crew',
-                passengers: 'passengers',
-                maxAtmospheringSpeed: '100000',
-                hyperdriveRating: 2.0,
-                mglt: 'MGLT',
-                cargoCapacity: 'Cargo Capacity',
-                consumables: 'Consumables'
-            )
+            'starships' => [
+                [
+                    new StarshipDTO(
+                        name: 'Test Name',
+                        model: 'Model',
+                        starshipClass: 'Class',
+                        manufacturer: 'Manufacturer',
+                        costInCredits: '100000',
+                        length: '1000',
+                        crew: 'Crew',
+                        passengers: 'passengers',
+                        maxAtmospheringSpeed: '100000',
+                        hyperdriveRating: 2.0,
+                        mglt: 'MGLT',
+                        cargoCapacity: 'Cargo Capacity',
+                        consumables: 'Consumables'
+                    ),
+                ],
+            ]
         ];
     }
 }
