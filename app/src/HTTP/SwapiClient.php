@@ -6,9 +6,11 @@ namespace App\HTTP;
 
 use App\DTO\StarshipDTO;
 use App\DTO\StarshipDTOMapper;
+use App\Exception\InfrastructureException;
 use App\Response\ResponseStatus;
 use App\Response\SwapiResponse;
 use App\Response\SwapiResponseInterface;
+use stdClass;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
@@ -32,6 +34,9 @@ final class SwapiClient implements SwapiClientInterface
         } catch (TransportExceptionInterface | ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface) {
             $clientResponse->setStatus(ResponseStatus::FAILURE);
             $clientResponse->setError('Error during fetching data from api.');
+        } catch (InfrastructureException $exception) {
+            $clientResponse->setStatus(ResponseStatus::FAILURE);
+            $clientResponse->setError($exception->getMessage());
         } finally {
             return $clientResponse;
         }
@@ -40,7 +45,11 @@ final class SwapiClient implements SwapiClientInterface
     /**
      * @return StarshipDTO[]
      *
-     * @throws TransportExceptionInterface | ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface
+     * @throws ClientExceptionInterface
+     * @throws RedirectionExceptionInterface
+     * @throws ServerExceptionInterface
+     * @throws TransportExceptionInterface
+     * @throws InfrastructureException
      */
     private function fetchAllStarships(): array
     {
@@ -84,6 +93,7 @@ final class SwapiClient implements SwapiClientInterface
      * @throws RedirectionExceptionInterface
      * @throws ServerExceptionInterface
      * @throws TransportExceptionInterface
+     * @throws InfrastructureException
      */
     private function getRequestContent(): array
     {
@@ -91,14 +101,20 @@ final class SwapiClient implements SwapiClientInterface
             method: 'GET',
             url: $this->swapiUrl,
         );
-        $content = json_decode(
-            json: $response->getContent(),
-        );
+        if (json_validate($response->getContent())) {
+            $content = json_decode(
+                json: $response->getContent(),
+            );
+            assert($content instanceof stdClass);
+            assert(property_exists($content, 'next'));
+            assert(isset($content->results));
 
-        return [
-            'next' => $content->next,
-            'results' => $content->results,
-        ];
+            return [
+                'next' => $content->next,
+                'results' => $content->results,
+            ];
+        }
+        throw new InfrastructureException('Error during validating json response');
     }
 
 }

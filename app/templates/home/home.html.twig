@@ -4,11 +4,11 @@
     <div class="row text-center mt-5">
         <h1>SWAPI Starships</h1>
     </div>
-    <div class="row">
+    <div class="row text-center">
         {% if starships is empty %}
             <h1>Something went wrong. Try again later.</h1>
         {% else %}
-            <table class="table table-striped table-responsive mt-5 table-dark text-center">
+            <table class="table table-striped table-responsive mt-5 table-dark">
                 <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -23,17 +23,17 @@
                 </thead>
                 <tbody>
                 {% for starship in starships %}
-                <tr>
-                    <td> {{ starship.name }} </td>
-                    <td> {{ starship.model }}</td>
-                    <td> {{ starship.starshipClass }}</td>
-                    <td> {{ starship.consumables }}</td>
-                    <td> {{ starship.costInCredits }}</td>
-                    <td> {{ starship.crew }}</td>
-                    <td> {{ starship.passengers }}</td>
-                    <td> {{ starship.hyperdriveRating }}</td>
-                <tr>
-                    {% endfor %}
+                    <tr>
+                        <td> {{ starship.name }} </td>
+                        <td> {{ starship.model }}</td>
+                        <td> {{ starship.starshipClass }}</td>
+                        <td> {{ starship.consumables }}</td>
+                        <td> {{ starship.costInCredits }}</td>
+                        <td> {{ starship.crew }}</td>
+                        <td> {{ starship.passengers }}</td>
+                        <td> {{ starship.hyperdriveRating }}</td>
+                    <tr>
+                {% endfor %}
                 </tbody>
             </table>
         {% endif %}
