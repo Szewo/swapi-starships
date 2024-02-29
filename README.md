@@ -10,9 +10,6 @@ Project uses the Star Wars API(https://swapi.dev/) to find spaceships whose hype
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
-To run this project you need environment that is capable of running Docker and Docker Compose commands.
-
 ### Prerequisites
 To run this project you need environment that is capable of running Docker and Docker Compose commands.
 ### Installation
