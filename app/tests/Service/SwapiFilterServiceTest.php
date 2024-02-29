@@ -17,7 +17,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(SwapiFilterInterface::class)]
+#[CoversClass(SwapiFilterService::class)]
 #[UsesClass(SwapiClientInterface::class)]
 #[UsesClass(SwapiResponseInterface::class)]
 final class SwapiFilterServiceTest extends TestCase
