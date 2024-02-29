@@ -13,6 +13,6 @@ debug-mode:
 phpstan:
 	docker exec -it swapi-starships-app-1 vendor/bin/phpstan analyse -c phpstan.dist.neon
 cs:
-	docker exec -it swapi-starships-app-1 tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src
+	docker exec -it swapi-starships-app-1 vendor/bin/php-cs-fixer fix src
 cs-check:
-	docker exec -it swapi-starships-app-1 tools/php-cs-fixer/vendor/bin/php-cs-fixer check src
+	docker exec -it swapi-starships-app-1 vendor/bin/php-cs-fixer check src
