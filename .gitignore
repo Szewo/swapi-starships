@@ -21,3 +21,6 @@ app/assets/vendor/
 /.php-cs-fixer.cache
 ###< friendsofphp/php-cs-fixer ###
 
+/app/.phpunit.cache/
+/app/tmp/
+/app/.phpunit.result.cache
