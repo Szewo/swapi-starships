@@ -31,11 +31,12 @@ final class SwapiClient implements SwapiClientInterface
         try {
             $result = $this->fetchAllStarships();
             $clientResponse->setContent($result);
+            $clientResponse->setStatus(status: ResponseStatus::SUCCESS);
         } catch (TransportExceptionInterface | ClientExceptionInterface | RedirectionExceptionInterface | ServerExceptionInterface) {
-            $clientResponse->setStatus(ResponseStatus::FAILURE);
-            $clientResponse->setError('Error during fetching data from api.');
+            $clientResponse->setStatus(status: ResponseStatus::FAILURE);
+            $clientResponse->setError(error: 'Error during fetching data from api.');
         } catch (InfrastructureException $exception) {
-            $clientResponse->setStatus(ResponseStatus::FAILURE);
+            $clientResponse->setStatus(status: ResponseStatus::FAILURE);
             $clientResponse->setError($exception->getMessage());
         } finally {
             return $clientResponse;

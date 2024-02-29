@@ -21,4 +21,4 @@ cs-check:
 unit:
 	docker exec -it swapi-starships-app-1 php bin/phpunit --testdox
 unit-coverage:
-	XDEBUG_MODE=coverage docker exec -it swapi-starships-app-1 php bin/phpunit --testdox --coverage-html ./tmp/coverage
+	XDEBUG_MODE=coverage docker exec -it swapi-starships-app-1 php -d memory_limit=-1 bin/phpunit --testdox --coverage-html ./tmp/coverage
