@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Exception\ApplicationException;
-use App\Service\SwapiFilterService;
+use App\Service\SwapiFilterInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 final class HomeController extends AbstractController
 {
     #[Route('/')]
-    public function home(SwapiFilterService $swapiFilterService): Response
+    public function home(SwapiFilterInterface $swapiFilterService): Response
     {
         try {
             $starships = $swapiFilterService->getFilteredStarships();
@@ -26,4 +26,5 @@ final class HomeController extends AbstractController
             );
         }
     }
+
 }

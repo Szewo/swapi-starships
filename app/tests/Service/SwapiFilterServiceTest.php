@@ -9,6 +9,7 @@ use App\Exception\ApplicationException;
 use App\HTTP\SwapiClientInterface;
 use App\Response\ResponseStatus;
 use App\Response\SwapiResponseInterface;
+use App\Service\SwapiFilterInterface;
 use App\Service\SwapiFilterService;
 use Mockery;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -16,12 +17,12 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
-#[CoversClass(SwapiFilterService::class)]
+#[CoversClass(SwapiFilterInterface::class)]
 #[UsesClass(SwapiClientInterface::class)]
 #[UsesClass(SwapiResponseInterface::class)]
 final class SwapiFilterServiceTest extends TestCase
 {
-    private SwapiFilterService $instance;
+    private SwapiFilterInterface $instance;
     private SwapiClientInterface $swapiClient;
     private SwapiResponseInterface $swapiResponse;
 

@@ -9,7 +9,7 @@ use App\Exception\ApplicationException;
 use App\HTTP\SwapiClientInterface;
 use App\Response\ResponseStatus;
 
-final readonly class SwapiFilterService
+final readonly class SwapiFilterService implements SwapiFilterInterface
 {
     private const float MIN_HYPERDRIVE_RATING = 2.0;
 
