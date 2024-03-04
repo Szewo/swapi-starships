@@ -15,8 +15,7 @@ final readonly class SwapiFilterService implements SwapiFilterInterface
 
     public function __construct(
         private SwapiClientInterface $swapiClient,
-    ) {
-    }
+    ) {}
 
     /**
      * @return StarshipDTO[]
@@ -32,7 +31,7 @@ final readonly class SwapiFilterService implements SwapiFilterInterface
 
         return array_filter(
             array: $response->getContent(),
-            callback: fn (StarshipDTO $starship) => $starship->hyperdriveRating >= self::MIN_HYPERDRIVE_RATING
+            callback: fn(StarshipDTO $starship) => $starship->hyperdriveRating >= self::MIN_HYPERDRIVE_RATING
         );
     }
 }

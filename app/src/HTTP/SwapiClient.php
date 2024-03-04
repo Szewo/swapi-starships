@@ -22,8 +22,7 @@ final class SwapiClient implements SwapiClientInterface
     public function __construct(
         private readonly HttpClientInterface $client,
         private string $swapiUrl = '',
-    ) {
-    }
+    ) {}
 
     public function getStarships(): SwapiResponseInterface
     {
@@ -83,8 +82,8 @@ final class SwapiClient implements SwapiClientInterface
      *             hyperdrive_rating: string,
      *             MGLT: string,
      *             starship_class: string,
-     *             pilots: array{int, string},
-     *             films: array{int, string},
+     *             pilots: array<int, string>,
+     *             films: array<int, string>,
      *             created: string,
      *             edited: string,
      *             url: string,

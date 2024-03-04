@@ -1,12 +1,12 @@
 <?php
 
 $finder = (new PhpCsFixer\Finder())
-    ->in(__DIR__)
+    ->in(['src', 'tests'])
 ;
 
 return (new PhpCsFixer\Config())
     ->setRules([
-        '@PSR2' => true,
+        '@PER-CS' => true,
     ])
     ->setFinder($finder)
     ;

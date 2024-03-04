@@ -17,8 +17,7 @@ final class SwapiResponse implements SwapiResponseInterface
         private ?ResponseStatus $status = null,
         private array $content = [],
         private string $error = self::DEFAULT_ERROR,
-    ) {
-    }
+    ) {}
 
     public function getStatus(): ?ResponseStatus
     {

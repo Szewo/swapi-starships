@@ -4,7 +4,4 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-final class ApplicationException extends \Exception
-{
-
-}
+final class ApplicationException extends \Exception {}

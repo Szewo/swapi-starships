@@ -20,6 +20,5 @@ final readonly class StarshipDTO
         public string $mglt,
         public string $cargoCapacity,
         public string $consumables,
-    ) {
-    }
+    ) {}
 }
