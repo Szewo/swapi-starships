@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DTO;
 
 final readonly class StarshipDTOMapper
@@ -19,8 +21,8 @@ final readonly class StarshipDTOMapper
      *     hyperdrive_rating: string,
      *     MGLT: string,
      *     starship_class: string,
-     *     pilots: array{int, string},
-     *     films: array{int, string},
+     *     pilots: array<int, string>,
+     *     films: array<int, string>,
      *     created: string,
      *     edited: string,
      *     url: string,
