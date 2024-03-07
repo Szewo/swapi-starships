@@ -12,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 final class HomeController extends AbstractController
 {
@@ -33,23 +34,17 @@ final class HomeController extends AbstractController
         }
     }
 
-    #[Route('/save', name: 'save')]
-    public function save(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/save', name: 'save', methods: 'POST')]
+    public function save(Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializer): Response
     {
-        $starship = new Starship();
-        $starship->setName($request->get('name'));
-        $starship->setModel($request->get('model'));
-        $starship->setStarshipClass($request->get('starshipClass'));
-        $starship->setConsumables($request->get('consumables'));
-        $starship->setCostInCredits($request->get('costInCredits'));
-        $starship->setCrew($request->get('crew'));
-        $starship->setPassengers($request->get('passengers'));
-        $starship->setHyperdriveRating((float) $request->get('hyperdriveRating'));
-
+        $starship = $serializer->deserialize(
+            data: $request->getPayload()->get('starship'),
+            type: Starship::class,
+            format: 'json'
+        );
         $entityManager->persist($starship);
         $entityManager->flush();
 
         return $this->redirectToRoute('home');
     }
-
 }

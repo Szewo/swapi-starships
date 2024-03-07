@@ -34,16 +34,8 @@
                         <td> {{ starship.passengers }}</td>
                         <td> {{ starship.hyperdriveRating }}</td>
                         <td>
-                            <form action="/save" method="GET">
-                                <input type="hidden" id="name" name="name" value="{{ starship.name }}" />
-                                <input type="hidden" id="model" name="model" value="{{ starship.model }}" />
-                                <input type="hidden" id="starshipClass" name="starshipClass" value="{{ starship.starshipClass }}" />
-                                <input type="hidden" id="consumables" name="consumables" value="{{ starship.consumables }}" />
-                                <input type="hidden" id="costInCredits" name="costInCredits" value="{{ starship.costInCredits }}" />
-                                <input type="hidden" id="crew" name="crew" value="{{ starship.crew }}" />
-                                <input type="hidden" id="passengers" name="passengers" value="{{ starship.passengers }}" />
-                                <input type="hidden" id="hyperdriveRating" name="hyperdriveRating" value="{{ starship.hyperdriveRating }}" />
-                                <input type="hidden" id="hyperdriveRating" name="hyperdriveRating" value="{{ starship.hyperdriveRating }}" />
+                            <form action="/save" method="POST">
+                                <input type="hidden" id="starship" name="starship" value="{{ starship|json_encode }}" />
                                 <button type="submit" class="btn btn-secondary">Save</button>
                             </form>
                         </td>

@@ -24,13 +24,13 @@ final class Starship
     #[ORM\Column(length: 255)]
     private ?string $starshipClass = null;
 
-    #[ORM\Column(length: 255, nullable: TRUE)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $manufacturer = null;
 
     #[ORM\Column(length: 255)]
     private ?string $costInCredits = null;
 
-    #[ORM\Column(length: 255, nullable: TRUE)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $length = null;
 
     #[ORM\Column(length: 255)]
@@ -39,16 +39,16 @@ final class Starship
     #[ORM\Column(length: 255)]
     private ?string $passengers = null;
 
-    #[ORM\Column(length: 255, nullable: TRUE)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $maxAtmospheringSpeed = null;
 
     #[ORM\Column]
     private ?float $hyperdriveRating = null;
 
-    #[ORM\Column(length: 255, nullable: TRUE)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $mglt = null;
 
-    #[ORM\Column(length: 255, nullable: TRUE)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $cargoCapacity = null;
 
     #[ORM\Column(length: 255)]
